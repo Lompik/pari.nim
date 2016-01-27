@@ -210,7 +210,7 @@ type
 
 var
   pariOut* {.importc: "pariOut", dynlib: libname.}: ptr PariOUT
-  pariErr* {.importc: "pariErr", dynlib: libname.}: ptr PariOUT
+  paricErr* {.importc: "pariErr", dynlib: libname.}: ptr PariOUT
 
 var
   pari_outfile* {.importc: "pari_outfile", dynlib: libname.}: ptr FILE
@@ -253,13 +253,9 @@ var
   current_psfile* {.importc: "current_psfile", dynlib: libname.}: cstring
   pari_datadir* {.importc: "pari_datadir", dynlib: libname.}: cstring
 
-## #-- 50 "pari.h" 2
-## #-- 1 "paricom.h" 1
-## #-- 41 "paricom.h"
 
 var CATCH_ALL* {.importc: "CATCH_ALL", dynlib: libname.}: clong
 
-## #-- 64 "paricom.h"
 
 var
   LOG2* {.importc: "LOG2", dynlib: libname.}: cdouble
@@ -328,11 +324,6 @@ const
   INIT_noPRIMEm* = 8
   INIT_noIMTm* = 16
 
-## #-- 51 "pari.h" 2
-## #-- 1 "pariold.h" 1
-## #-- 52 "pari.h" 2
-## #-- 1 "parierr.h" 1
-## #-- 14 "parierr.h"
 
 type
   err_list* {.size: sizeof(cint).} = enum
@@ -349,11 +340,6 @@ const
   warnmem* = 3
   warnuser* = 4
 
-## #-- 53 "pari.h" 2
-## #-- 1 "paridecl.h" 1
-## #-- 19 "paridecl.h"
-## #-- 1 "parinf.h" 1
-## #-- 15 "parinf.h"
 
 const
   typ_NULL* = 0
@@ -424,7 +410,7 @@ const
   nf_FORCE* = 2
   nf_ALL* = 4
   nf_GENMAT* = 4
-  nf_INIT* = 4
+  nf_INITc* = 4
   nf_RAW* = 8
   nf_RED* = 8
   nf_PARTIALFACT* = 16
@@ -558,7 +544,6 @@ proc zeta_get_i0*(r1: clong; r2: clong; bit: clong; limx: GEN): clong {.cdecl,
     importc: "zeta_get_i0", dynlib: libname.}
 proc zeta_get_N0*(C: GEN; limx: GEN): clong {.cdecl, importc: "zeta_get_N0",
                                         dynlib: libname.}
-## #-- 20 "paridecl.h" 2
 
 type
   bb_group* = object
@@ -2540,17 +2525,17 @@ proc nfcertify*(x: GEN): GEN {.cdecl, importc: "nfcertify", dynlib: libname.}
 proc nfgaloismatrix*(nf: GEN; s: GEN): GEN {.cdecl, importc: "nfgaloismatrix",
                                        dynlib: libname.}
 
-proc nfini1t*(x: GEN; prec: clong=pari_default_prec): GEN {.cdecl, importc: "nfinit", dynlib: libname.}
+proc nfinit*(x: GEN; prec: clong=pari_default_prec): GEN {.cdecl, importc: "nfinit", dynlib: libname.}
 
-proc nfini1t0*(x: GEN; flag: clong; prec: clong=pari_default_prec): GEN {.cdecl, importc: "nfinit0",
+proc nfinit0*(x: GEN; flag: clong; prec: clong=pari_default_prec): GEN {.cdecl, importc: "nfinit0",
     dynlib: libname.}
 
-proc nfini1tall*(x: GEN; flag: clong; prec: clong=pari_default_prec): GEN {.cdecl, importc: "nfinitall",
+proc nfinitall*(x: GEN; flag: clong; prec: clong=pari_default_prec): GEN {.cdecl, importc: "nfinitall",
     dynlib: libname.}
 
-proc nfini1tred*(x: GEN; prec: clong=pari_default_prec): GEN {.cdecl, importc: "nfinitred", dynlib: libname.}
+proc nfinitred*(x: GEN; prec: clong=pari_default_prec): GEN {.cdecl, importc: "nfinitred", dynlib: libname.}
 
-proc nfini1tred2*(x: GEN; prec: clong=pari_default_prec): GEN {.cdecl, importc: "nfinitred2",
+proc nfinitred2*(x: GEN; prec: clong=pari_default_prec): GEN {.cdecl, importc: "nfinitred2",
                                        dynlib: libname.}
 proc nfisincl*(a: GEN; b: GEN): GEN {.cdecl, importc: "nfisincl", dynlib: libname.}
 proc nfisisom*(a: GEN; b: GEN): GEN {.cdecl, importc: "nfisisom", dynlib: libname.}
@@ -4299,11 +4284,11 @@ proc pari_close_opts*(init_opts: pari_ulong) {.cdecl, importc: "pari_close_opts"
     dynlib: libname.}
 proc pari_daemon*(): cint {.cdecl, importc: "pari_daemon", dynlib: libname.}
 
-proc pari_er1r*(numerr: cint) {.varargs, cdecl, importc: "pari_err", dynlib: libname.}
+proc pari_err*(numerr: cint) {.varargs, cdecl, importc: "pari_err", dynlib: libname.}
 
-proc pari_er1r_last*(): GEN {.cdecl, importc: "pari_err_last", dynlib: libname.}
+proc pari_err_last*(): GEN {.cdecl, importc: "pari_err_last", dynlib: libname.}
 
-proc pari_er1r2str*(err: GEN): cstring {.cdecl, importc: "pari_err2str", dynlib: libname.}
+proc pari_err2str*(err: GEN): cstring {.cdecl, importc: "pari_err2str", dynlib: libname.}
 proc pari_init_opts*(parisize: csize; maxprime: pari_ulong; init_opts: pari_ulong) {.
     cdecl, importc: "pari_init_opts", dynlib: libname.}
 proc pari_init*(parisize: csize; maxprime: pari_ulong) {.cdecl, importc: "pari_init",
@@ -5977,53 +5962,53 @@ proc zx_to_zv*(x: GEN; N: clong): GEN {.cdecl, importc, dynlib: libname.}
 proc err_get_compo*(e: GEN; i: clong): GEN {.cdecl, importc, dynlib: libname.}
 proc err_get_num*(e: GEN): clong {.cdecl, importc, dynlib: libname.}
 
-proc pari_er1r_BUG*(f: cstring) {.cdecl, importc, dynlib: libname.}
+proc pari_err_BUG*(f: cstring) {.cdecl, importc, dynlib: libname.}
 
-proc pari_er1r_COMPONENT*(f: cstring; op: cstring; l: GEN; x: GEN) {.cdecl, importc, dynlib: libname.}
+proc pari_err_COMPONENT*(f: cstring; op: cstring; l: GEN; x: GEN) {.cdecl, importc, dynlib: libname.}
 
-proc pari_er1r_CONSTPOL*(f: cstring) {.cdecl, importc, dynlib: libname.}
+proc pari_err_CONSTPOL*(f: cstring) {.cdecl, importc, dynlib: libname.}
 
-proc pari_er1r_COPRIME*(f: cstring; x: GEN; y: GEN) {.cdecl, importc, dynlib: libname.}
+proc pari_err_COPRIME*(f: cstring; x: GEN; y: GEN) {.cdecl, importc, dynlib: libname.}
 
-proc pari_er1r_DIM*(f: cstring) {.cdecl, importc, dynlib: libname.}
+proc pari_err_DIM*(f: cstring) {.cdecl, importc, dynlib: libname.}
 
-proc pari_er1r_DOMAIN*(f: cstring; v: cstring; op: cstring; l: GEN; x: GEN) {.cdecl, importc, dynlib: libname.}
+proc pari_err_DOMAIN*(f: cstring; v: cstring; op: cstring; l: GEN; x: GEN) {.cdecl, importc, dynlib: libname.}
 
-proc pari_er1r_FILE*(f: cstring; g: cstring) {.cdecl, importc, dynlib: libname.}
+proc pari_err_FILE*(f: cstring; g: cstring) {.cdecl, importc, dynlib: libname.}
 
-proc pari_er1r_FLAG*(f: cstring) {.cdecl, importc, dynlib: libname.}
+proc pari_err_FLAG*(f: cstring) {.cdecl, importc, dynlib: libname.}
 
-proc pari_er1r_IMPL*(f: cstring) {.cdecl, importc, dynlib: libname.}
+proc pari_err_IMPL*(f: cstring) {.cdecl, importc, dynlib: libname.}
 
-proc pari_er1r_INV*(f: cstring; x: GEN) {.cdecl, importc, dynlib: libname.}
+proc pari_err_INV*(f: cstring; x: GEN) {.cdecl, importc, dynlib: libname.}
 
-proc pari_er1r_IRREDPOL*(f: cstring; x: GEN) {.cdecl, importc, dynlib: libname.}
+proc pari_err_IRREDPOL*(f: cstring; x: GEN) {.cdecl, importc, dynlib: libname.}
 
-proc pari_er1r_MAXPRIME*(c: pari_ulong) {.cdecl, importc, dynlib: libname.}
+proc pari_err_MAXPRIME*(c: pari_ulong) {.cdecl, importc, dynlib: libname.}
 
-proc pari_er1r_MODULUS*(f: cstring; x: GEN; y: GEN) {.cdecl, importc, dynlib: libname.}
+proc pari_err_MODULUS*(f: cstring; x: GEN; y: GEN) {.cdecl, importc, dynlib: libname.}
 
-proc pari_er1r_OP*(f: cstring; x: GEN; y: GEN) {.cdecl, importc, dynlib: libname.}
+proc pari_err_OP*(f: cstring; x: GEN; y: GEN) {.cdecl, importc, dynlib: libname.}
 
-proc pari_er1r_OVERFLOW*(f: cstring) {.cdecl, importc, dynlib: libname.}
+proc pari_err_OVERFLOW*(f: cstring) {.cdecl, importc, dynlib: libname.}
 
-proc pari_er1r_PACKAGE*(f: cstring) {.cdecl, importc, dynlib: libname.}
+proc pari_err_PACKAGE*(f: cstring) {.cdecl, importc, dynlib: libname.}
 
-proc pari_er1r_PREC*(f: cstring) {.cdecl, importc, dynlib: libname.}
+proc pari_err_PREC*(f: cstring) {.cdecl, importc, dynlib: libname.}
 
-proc pari_er1r_PRIME*(f: cstring; x: GEN) {.cdecl, importc, dynlib: libname.}
+proc pari_err_PRIME*(f: cstring; x: GEN) {.cdecl, importc, dynlib: libname.}
 
-proc pari_er1r_PRIORITY*(f: cstring; x: GEN; op: cstring; v: clong) {.cdecl, importc, dynlib: libname.}
+proc pari_err_PRIORITY*(f: cstring; x: GEN; op: cstring; v: clong) {.cdecl, importc, dynlib: libname.}
 
-proc pari_er1r_SQRTN*(f: cstring; x: GEN) {.cdecl, importc, dynlib: libname.}
+proc pari_err_SQRTN*(f: cstring; x: GEN) {.cdecl, importc, dynlib: libname.}
 
-proc pari_er1r_TYPE*(f: cstring; x: GEN) {.cdecl, importc, dynlib: libname.}
+proc pari_err_TYPE*(f: cstring; x: GEN) {.cdecl, importc, dynlib: libname.}
 
-proc pari_er1r_TYPE2*(f: cstring; x: GEN; y: GEN) {.cdecl, importc, dynlib: libname.}
+proc pari_err_TYPE2*(f: cstring; x: GEN; y: GEN) {.cdecl, importc, dynlib: libname.}
 
-proc pari_er1r_VAR*(f: cstring; x: GEN; y: GEN) {.cdecl, importc, dynlib: libname.}
+proc pari_err_VAR*(f: cstring; x: GEN; y: GEN) {.cdecl, importc, dynlib: libname.}
 
-proc pari_er1r_ROOTS0*(f: cstring) {.cdecl, importc, dynlib: libname.}
+proc pari_err_ROOTS0*(f: cstring) {.cdecl, importc, dynlib: libname.}
 var SQRI_KARATSUBA_LIMIT*: clong
 
 var MULII_KARATSUBA_LIMIT*: clong
