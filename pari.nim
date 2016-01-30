@@ -4809,7 +4809,7 @@ proc FpX_FpXY_resultant*(a: GEN; b0: GEN; p: GEN): GEN {.cdecl,
     importc: "FpX_FpXY_resultant", dynlib: libname.}
 proc FpX_factorff_irred*(P: GEN; Q: GEN; p: GEN): GEN {.cdecl,
     importc: "FpX_factorff_irred", dynlib: libname.}
-proc FpX_ffintersect*(P: GEN; Q: GEN; n: clong; l: GEN; SP: ptr GEN; SQ: ptr GEN; MA: GEN;
+proc FpX_ffintersect*(P: GEN; Q: GEN; n: clong; pari_l: GEN; SP: ptr GEN; SQ: ptr GEN; MA: GEN;
                      MB: GEN) {.cdecl, importc: "FpX_ffintersect", dynlib: libname.}
 proc FpX_ffisom*(P: GEN; Q: GEN; par1: GEN): GEN {.cdecl, importc: "FpX_ffisom",
     dynlib: libname.}
@@ -5718,7 +5718,7 @@ proc bit_accuracy_mul*(x: clong; y: cdouble): cdouble {.cdecl, importc, dynlib: 
 proc bit_prec*(x: GEN): clong {.cdecl, importc, dynlib: libname.}
 proc both_odd*(x: clong; y: clong): cint {.cdecl, importc, dynlib: libname.}
 proc cgetc*(x: clong): GEN {.cdecl, importc, dynlib: libname.}
-proc cgetalloc*(t: clong; l: csize): GEN {.cdecl, importc, dynlib: libname.}
+proc cgetalloc*(t: clong; pari_l: csize): GEN {.cdecl, importc, dynlib: libname.}
 proc cxcompotor*(z: GEN; prec: clong=pari_default_prec): GEN {.cdecl, importc, dynlib: libname.}
 proc cgiv*(x: GEN) {.cdecl, importc, dynlib: libname.}
 proc col_ei*(n: clong; i: clong): GEN {.cdecl, importc, dynlib: libname.}
@@ -5727,7 +5727,7 @@ proc const_vec*(n: clong; x: GEN): GEN {.cdecl, importc, dynlib: libname.}
 proc const_vecsmall*(n: clong; c: clong): GEN {.cdecl, importc, dynlib: libname.}
 proc constant_term*(x: GEN): GEN {.cdecl, importc, dynlib: libname.}
 proc cxnorm*(x: GEN): GEN {.cdecl, importc, dynlib: libname.}
-proc cyclic_perm*(l: clong; d: clong): GEN {.cdecl, importc, dynlib: libname.}
+proc cyclic_perm*(pari_l: clong; d: clong): GEN {.cdecl, importc, dynlib: libname.}
 proc dbllog2r*(x: GEN): cdouble {.cdecl, importc, dynlib: libname.}
 proc degpol*(x: GEN): clong {.cdecl, importc, dynlib: libname.}
 proc divsBIL*(n: clong): clong {.cdecl, importc, dynlib: libname.}
@@ -5762,7 +5762,7 @@ proc gtofp*(z: GEN; prec: clong=pari_default_prec): GEN {.cdecl, importc, dynlib
 proc gtomp*(z: GEN; prec: clong=pari_default_prec): GEN {.cdecl, importc, dynlib: libname.}
 proc gtos*(x: GEN): clong {.cdecl, importc, dynlib: libname.}
 proc gval*(x: GEN; v: clong): clong {.cdecl, importc, dynlib: libname.}
-proc identity_perm*(l: clong): GEN {.cdecl, importc, dynlib: libname.}
+proc identity_perm*(pari_l: clong): GEN {.cdecl, importc, dynlib: libname.}
 proc equali1*(n: GEN): cint {.cdecl, importc, dynlib: libname.}
 proc equalim1*(n: GEN): cint {.cdecl, importc, dynlib: libname.}
 proc is_bigint*(n: GEN): cint {.cdecl, importc, dynlib: libname.}
@@ -5926,10 +5926,10 @@ proc vecsmall_shorten*(v: GEN; n: clong): GEN {.cdecl, importc, dynlib: libname.
 proc vecsmall_to_col*(z: GEN): GEN {.cdecl, importc, dynlib: libname.}
 proc vecsmall_to_vec*(z: GEN): GEN {.cdecl, importc, dynlib: libname.}
 proc vecsmalltrunc_append*(x: GEN; t: clong) {.cdecl, importc, dynlib: libname.}
-proc vecsmalltrunc_init*(l: clong): GEN {.cdecl, importc, dynlib: libname.}
+proc vecsmalltrunc_init*(pari_l: clong): GEN {.cdecl, importc, dynlib: libname.}
 proc vectrunc_append*(x: GEN; t: GEN) {.cdecl, importc, dynlib: libname.}
 proc vectrunc_append_batch*(x: GEN; y: GEN) {.cdecl, importc, dynlib: libname.}
-proc vectrunc_init*(l: clong): GEN {.cdecl, importc, dynlib: libname.}
+proc vectrunc_init*(pari_l: clong): GEN {.cdecl, importc, dynlib: libname.}
 proc zc_to_ZC*(x: GEN): GEN {.cdecl, importc, dynlib: libname.}
 proc zero_F2m*(n: clong; m: clong): GEN {.cdecl, importc, dynlib: libname.}
 proc zero_F2m_copy*(n: clong; m: clong): GEN {.cdecl, importc, dynlib: libname.}
@@ -5956,7 +5956,7 @@ proc zm_transpose*(x: GEN): GEN {.cdecl, importc, dynlib: libname.}
 proc zv_copy*(x: GEN): GEN {.cdecl, importc, dynlib: libname.}
 proc zv_to_ZV*(x: GEN): GEN {.cdecl, importc, dynlib: libname.}
 proc zv_to_zx*(x: GEN; sv: clong): GEN {.cdecl, importc, dynlib: libname.}
-proc zx_renormalize*(x: GEN; l: clong): GEN {.cdecl, importc, dynlib: libname.}
+proc zx_renormalize*(x: GEN; pari_l: clong): GEN {.cdecl, importc, dynlib: libname.}
 proc zx_shift*(x: GEN; n: clong): GEN {.cdecl, importc, dynlib: libname.}
 proc zx_to_zv*(x: GEN; N: clong): GEN {.cdecl, importc, dynlib: libname.}
 proc err_get_compo*(e: GEN; i: clong): GEN {.cdecl, importc, dynlib: libname.}
@@ -5964,7 +5964,7 @@ proc err_get_num*(e: GEN): clong {.cdecl, importc, dynlib: libname.}
 
 proc pari_err_BUG*(f: cstring) {.cdecl, importc, dynlib: libname.}
 
-proc pari_err_COMPONENT*(f: cstring; op: cstring; l: GEN; x: GEN) {.cdecl, importc, dynlib: libname.}
+proc pari_err_COMPONENT*(f: cstring; op: cstring; pari_l: GEN; x: GEN) {.cdecl, importc, dynlib: libname.}
 
 proc pari_err_CONSTPOL*(f: cstring) {.cdecl, importc, dynlib: libname.}
 
@@ -5972,7 +5972,7 @@ proc pari_err_COPRIME*(f: cstring; x: GEN; y: GEN) {.cdecl, importc, dynlib: lib
 
 proc pari_err_DIM*(f: cstring) {.cdecl, importc, dynlib: libname.}
 
-proc pari_err_DOMAIN*(f: cstring; v: cstring; op: cstring; l: GEN; x: GEN) {.cdecl, importc, dynlib: libname.}
+proc pari_err_DOMAIN*(f: cstring; v: cstring; op: cstring; pari_l: GEN; x: GEN) {.cdecl, importc, dynlib: libname.}
 
 proc pari_err_FILEc*(f: cstring; g: cstring) {.cdecl, importc, dynlib: libname.}
 
