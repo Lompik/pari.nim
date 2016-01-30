@@ -6134,9 +6134,13 @@ proc `>>`*(a: GEN, num: clong):GEN=gshift(a,-num)
 proc max*(a, b: GEN):GEN=gmax(a,b)
 proc min*(a, b: GEN):GEN=gmin(a,b)
 
-proc toInt*(a:GEN ): clong=itos_or_0(a)
-
 proc `mod`*(a,b: GEN):GEN= gmod(a,b)
 
 proc `$`*(a:Gen):string =
   $Gentostr(a)
+
+proc toInt*(a:GEN ): clong= itos_or_0(a)
+proc toFloat*(a:Gen):float= gtodouble(a)
+proc toStr*(a:Gen):string= $a
+
+proc gel*(g:GEN, pos: int ):GEN=safegel(g, pos)[]
