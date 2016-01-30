@@ -210,7 +210,7 @@ type
 
 var
   pariOut* {.importc: "pariOut", dynlib: libname.}: ptr PariOUT
-  paricErr* {.importc: "pariErr", dynlib: libname.}: ptr PariOUT
+  pariErrc* {.importc: "pariErr", dynlib: libname.}: ptr PariOUT
 
 var
   pari_outfile* {.importc: "pari_outfile", dynlib: libname.}: ptr FILE
@@ -5974,7 +5974,7 @@ proc pari_err_DIM*(f: cstring) {.cdecl, importc, dynlib: libname.}
 
 proc pari_err_DOMAIN*(f: cstring; v: cstring; op: cstring; l: GEN; x: GEN) {.cdecl, importc, dynlib: libname.}
 
-proc pari_err_FILE*(f: cstring; g: cstring) {.cdecl, importc, dynlib: libname.}
+proc pari_err_FILEc*(f: cstring; g: cstring) {.cdecl, importc, dynlib: libname.}
 
 proc pari_err_FLAG*(f: cstring) {.cdecl, importc, dynlib: libname.}
 
