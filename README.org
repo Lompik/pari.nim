@@ -4,7 +4,7 @@ This is a nim modules with binding to the Pari/Gp library wrapper.
 
 * Use
 
-The Pari/Gp libraries need to be accesssible for dynamic loading.
+The Pari/Gp - version 2.7.5 - libraries need to be accesssible for dynamic loading.
 
  ~import pari~ will import all (or most) C defined functions from Pari/Gp to nim. New type introduced :'GEN'. 'newGEN(1)' to create a new 'GEN' type.
 
